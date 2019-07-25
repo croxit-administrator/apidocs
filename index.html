@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;]">
+  <body class="index" data-languages="[&quot;Json&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -211,7 +211,7 @@
     <div class="toc-wrapper">
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="Json">Json</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -261,7 +261,7 @@
         <h1 id='introduction'>Introduction</h1>
 <p>Welcome to the <code>croxit.io</code> API! You can use our API to access croxit API endpoints, which can get payment / invoice on your business or product.</p>
 
-<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p>We have language bindings in Json, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
 
 <p>Just enjoy to explore more on this croxit API!</p>
 <h2 id='learn-more-about-api'>Learn more about API</h2>
@@ -270,23 +270,27 @@
 <blockquote>
 <p><code>Croxit</code> use secrete key every you hit our APIs, for example your API key is</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>  crx_development_P4qDfOss0OCpl8RtKrROHjaQYNCk9dN5lSfk+R1l9Wbe+rSiCwZ3jw<span class="o">==</span>
+<pre class="highlight plaintext"><code>  crx_development_P4qDfOss0OCpl8RtKrROHjaQYNCk9dN5lSfk+R1l9Wbe+rSiCwZ3jw==
 </code></pre>
 <blockquote>
 <p>First add a colon at the end</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>  crx_development_P4qDfOss0OCpl8RtKrROHjaQYNCk9dN5lSfk+R1l9Wbe+rSiCwZ3jw<span class="o">==</span>
+<pre class="highlight plaintext"><code>  crx_development_P4qDfOss0OCpl8RtKrROHjaQYNCk9dN5lSfk+R1l9Wbe+rSiCwZ3jw==
 </code></pre>
 <blockquote>
 <p>Finally, just encode your api key to get this</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>  Y3J4X2RldmVsb3BtZW50X1A0cURmT3NzME9DcGw4UnRLclJPSGphUVlOQ2s5ZE41bFNmaytSMWw5V2JlK3JTaUN3WjNqdz09
+<pre class="highlight plaintext"><code>  Y3J4X2RldmVsb3BtZW50X1A0cURmT3NzME9DcGw4UnRLclJPSGphUVlOQ2s5ZE41bFNmaytSMWw5V2JlK3JTaUN3WjNqdz09
 </code></pre>
 <p>Croxit uses API keys to allow access to the API. You can register a new croxit API key at our <a href="http://croxit.io/developers">developer portal</a>.</p>
 
 <p>Croxit expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
 
 <p><code>Authorization: your base64 secrete key</code></p>
+
+<p>All the following request must inlcude header json type, so just place this on your header:</p>
+
+<p><code>Content-Type: application/json</code></p>
 
 <aside class="notice">
 You have to register first at <code>croxit.io</code> to get your API secrete key.
@@ -306,11 +310,11 @@ This Fixed virtual account is open (can be pay every time) and you can set the e
 <blockquote>
 <p>Example create fixed Virtual Account</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://croxit.io/virtual_accounts/create"</span> -X POST <span class="se">\</span>
-  -H <span class="s2">"Authorization: Y3J4X2RldmVsb3BtZW50X1A0cURmT3NzME9DcGw4UnRLclJPSGphUVlOQ2s5ZE41bFNmaytSMWw5V2JlK3JTaUN3WjNqdz09"</span> <span class="se">\</span>
-  -d <span class="nv">customer_id</span><span class="o">=</span>virtual_account_123456789 <span class="se">\</span>
-  -d <span class="nv">bank_id</span><span class="o">=</span>BNI <span class="se">\</span>
-  -d <span class="nv">name</span><span class="o">=</span><span class="s1">'Brama Diwangkara'</span>
+<pre class="highlight plaintext"><code>  {
+    "customer_id":"virtual_account_123456789",
+    "bank_id":"BNI",
+    "name":"Brama Diwangkara"
+  }
 </code></pre>
 <table><thead>
 <tr>
@@ -430,10 +434,10 @@ Possible error codes: <code>401</code>, <code>402</code>, <code>406</code> and <
 <blockquote>
 <p>Example update fixed Virtual Account</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://croxit.io/virtual_accounts/update/5tty4212233uiu"</span> -X PUT <span class="se">\</span>
-  -H <span class="s2">"Authorization: Y3J4X2RldmVsb3BtZW50X1A0cURmT3NzME9DcGw4UnRLclJPSGphUVlOQ2s5ZE41bFNmaytSMWw5V2JlK3JTaUN3WjNqdz09"</span> <span class="se">\</span>
-  -d <span class="nv">trx_amount</span><span class="o">=</span>2000000 <span class="se">\</span>
-  -d <span class="nv">datetime_expired</span><span class="o">=</span>2020-01-01 13:00:00 <span class="se">\</span>
+<pre class="highlight plaintext"><code>  {
+    "trx_amount":2000000,
+    "datetime_expired":"2020-01-01 13:00:00"
+  }
 </code></pre>
 <table><thead>
 <tr>
@@ -527,12 +531,6 @@ Possible error codes: <code>401</code>, <code>402</code>, <code>406</code> and <
 <h2 id='get-detail-fixed-virtual-account'>Get Detail Fixed Virtual Account</h2><h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET https://croxit.io/virtual_accounts/get/{virtual_account_id}</code></p>
 <h3 id='request-parameters-3'>Request Parameters</h3>
-<blockquote>
-<p>Example get detail fixed Virtual Account</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://croxit.io/virtual_accounts/get/5tty4212233uiu"</span> -X GET <span class="se">\</span>
-  -H <span class="s2">"Authorization: Y3J4X2RldmVsb3BtZW50X1A0cURmT3NzME9DcGw4UnRLclJPSGphUVlOQ2s5ZE41bFNmaytSMWw5V2JlK3JTaUN3WjNqdz09"</span> 
-</code></pre>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -617,12 +615,6 @@ Possible error codes: <code>401</code>, <code>402</code>, <code>406</code> and <
 <h2 id='get-payment-fixed-virtual-account'>Get Payment Fixed Virtual Account</h2><h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET https://croxit.io/virtual_accounts/payment/{payment_id}</code></p>
 <h3 id='request-parameters-4'>Request Parameters</h3>
-<blockquote>
-<p>Example get payment fixed Virtual Account</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://croxit.io/virtual_accounts/payment/pay_9283_99132"</span> -X GET <span class="se">\</span>
-  -H <span class="s2">"Authorization: Y3J4X2RldmVsb3BtZW50X1A0cURmT3NzME9DcGw4UnRLclJPSGphUVlOQ2s5ZE41bFNmaytSMWw5V2JlK3JTaUN3WjNqdz09"</span> 
-</code></pre>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -764,7 +756,7 @@ This error section is information about your failed request to our <code>croxit<
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="Json">Json</a>
           </div>
       </div>
     </div>
