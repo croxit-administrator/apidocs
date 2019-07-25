@@ -81,7 +81,7 @@ This endpoint is use to create virtual account.
 
 > Example create fixed Virtual Account
 
-```Json
+```json
   {
     "customer_id":"virtual_account_123456789",
     "bank_id":"BNI",
@@ -151,7 +151,7 @@ Possible error codes: <code>401</code>, <code>402</code>, <code>406</code> and <
 
 > Example update fixed Virtual Account
 
-```Json
+```json
   {
     "trx_amount":2000000,
     "datetime_expired":"2020-01-01 13:00:00"
