@@ -2,7 +2,7 @@
 title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
+  - Json
 
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
@@ -18,7 +18,7 @@ search: true
 
 Welcome to the `croxit.io` API! You can use our API to access croxit API endpoints, which can get payment / invoice on your business or product.
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+We have language bindings in Json, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
 
 Just enjoy to explore more on this croxit API!
 
@@ -29,19 +29,19 @@ If you are not master at APIs, feel free to ask us about our API or you can expl
 
 > `Croxit` use secrete key every you hit our APIs, for example your API key is
 
-```shell
+```Json
   crx_development_P4qDfOss0OCpl8RtKrROHjaQYNCk9dN5lSfk+R1l9Wbe+rSiCwZ3jw==
 ```
 
 > First add a colon at the end
 
-```shell
+```Json
   crx_development_P4qDfOss0OCpl8RtKrROHjaQYNCk9dN5lSfk+R1l9Wbe+rSiCwZ3jw==
 ```
 
 > Finally, just encode your api key to get this
 
-```shell
+```Json
   Y3J4X2RldmVsb3BtZW50X1A0cURmT3NzME9DcGw4UnRLclJPSGphUVlOQ2s5ZE41bFNmaytSMWw5V2JlK3JTaUN3WjNqdz09
 ```
 
@@ -51,11 +51,17 @@ Croxit expects for the API key to be included in all API requests to the server 
 
 `Authorization: your base64 secrete key`
 
+All the following request must inlcude header json type, so just place this on your header:
+
+`Content-Type: application/json`
+
 <aside class="notice">
 You have to register first at <code>croxit.io</code> to get your API secrete key.
 </aside>
 
 # Virtual Accounts
+
+<!-- CREATE FIXED VIRTUAL ACCOUNT -->
 
 ## Create Fixed Virtual Account
 
@@ -75,12 +81,12 @@ This endpoint is use to create virtual account.
 
 > Example create fixed Virtual Account
 
-```shell
-curl "https://croxit.io/virtual_accounts/create" -X POST \
-  -H "Authorization: Y3J4X2RldmVsb3BtZW50X1A0cURmT3NzME9DcGw4UnRLclJPSGphUVlOQ2s5ZE41bFNmaytSMWw5V2JlK3JTaUN3WjNqdz09" \
-  -d customer_id=virtual_account_123456789 \
-  -d bank_id=BNI \
-  -d name='Brama Diwangkara'
+```Json
+  {
+    "customer_id":"virtual_account_123456789",
+    "bank_id":"BNI",
+    "name":"Brama Diwangkara"
+  }
 ```
 
 Parameter | Mandatory | Description
@@ -88,9 +94,8 @@ Parameter | Mandatory | Description
 customer_id | yes | `string` 
 bank_id | yes | `string`
 customer_name | yes | `string`
-virtual_account | no | `string`
+virtual_account_number | no | `string`
 is_closed | no | `boolean`
-is_single_use | no | `boolean`
 trx_amount | optional | `number` if virtual_account set to closed, you have to determine the trx_amount
 datetime_expired | no | `ISO_DATE` 
 
@@ -106,10 +111,10 @@ datetime_expired | no | `ISO_DATE`
   "customer_id":"virtual_account_123456789",
   "bank_id":"BNI",
   "customer_name":"Brama Diwangkara",
-  "virtual_account":"80008087798381082",
+  "virtual_account_number":"80008087798381082",
+  "virtual_account_id":"5tty4212233uiu",
   "is_closed":false,
-  "is_single_use":false,
-  "id":"523frfhhto098",
+  "datetime_expired":"2020-01-01 13:00:00",
   "status":"active",
 }
 ```
@@ -120,11 +125,12 @@ company_id | Your user ID
 customer_id | Your customer ID based on your request 
 bank_id | Bank id for the created virtual account
 customer_name | Name of your virtual account 
-virtual_account | Generated Virtual Account number and virtual account bank
-is_closed | The transaction amount determined if has true value
-is_single_use | The virtual account can be use only once if has true value 
+virtual_account_number | Generated Virtual Account number and virtual account bank, we place <code>random number</code> if this value is not defined
+virtual_account_id | Generate id for Virtual Account from <code>croxit.io</code>
+is_closed | The transaction amount determined if has true <code>value</code>, default value is <code>false</code>
 trx_amount | Amount of transaction if you set `is_closed` equals true
-datetime_expired | The time when the virtual account will be expired 
+datetime_expired | The time when the virtual account will be expired, default for this value is 1 year from virtual account created
+status | status that defines virtual account ACTIVE or INACTIVE
 
 
 
@@ -132,107 +138,176 @@ datetime_expired | The time when the virtual account will be expired
 Possible error codes: <code>401</code>, <code>402</code>, <code>406</code> and <code>410</code>. See error tab for detail <code>error</code>.
 </aside>
 
+
+<!-- UPDATE FIXED VIRTUAL ACCOUNT -->
+
 ## Update Fixed Virtual Account
 
-```ruby
-require 'kittn'
+### HTTP Request
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
+`PUT https://croxit.io/virtual_accounts/update/{virtual_account_id}`
+
+### Request Parameters
+
+> Example update fixed Virtual Account
+
+```Json
+  {
+    "trx_amount":2000000,
+    "datetime_expired":"2020-01-01 13:00:00"
+  }
 ```
 
-```python
-import kittn
+Parameter | Description
+--------- | ------- | -----------
+customer_name | `string`
+trx_amount | `number` changeable if your virtual account is set to <code>is_closed</code>
+datetime_expired | `ISO_DATE` 
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
+### Response Parameters
 
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
 
-```javascript
-const kittn = require('kittn');
+> The above command returns response JSON structured like this:
 
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "company_id":"128971hjkiie",
+  "customer_id":"virtual_account_123456789",
+  "bank_id":"BNI",
+  "customer_name":"Brama Diwangkara",
+  "virtual_account_number":"80008087798381082",
+  "virtual_account_id":"5tty4212233uiu",
+  "is_closed":true,
+  "trx_amount":2000000,
+  "datetime_expired":"2020-01-01 13:00:00",
+  "status":"active",
 }
 ```
 
-This endpoint retrieves a specific kitten.
+Parameter |  Description
+--------- |  -----------
+company_id | Your user ID
+customer_id | Your customer ID based on your request 
+bank_id | Bank id for the created virtual account
+customer_name | Name of your virtual account 
+virtual_account_number | Generated Virtual Account number and virtual account bank, we place <code>random number</code> if this value is not defined
+virtual_account_id | Generate id for Virtual Account from <code>croxit.io</code>
+is_closed | The transaction amount determined if has <code>true</code> value, default value is <code>false</code>
+trx_amount | Amount of transaction if you set `is_closed` equals true
+datetime_expired | The time when the virtual account will be expired 
+status | status that defines virtual account ACTIVE or INACTIVE
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+
+
+<aside class="notice">
+Possible error codes: <code>401</code>, <code>402</code>, <code>406</code> and <code>410</code>. See error tab for detail <code>error</code>.
+</aside>
+
+
+<!-- GET DETAIL FIXED VIRTUAL ACCOUNT -->
+
+## Get Detail Fixed Virtual Account
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`GET https://croxit.io/virtual_accounts/get/{virtual_account_id}`
 
-### URL Parameters
+### Request Parameters
 
 Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
+--------- | ------- | -----------
+virtual_account_id | Generate id for Virtual Account from <code>croxit.io</code>
 
-## Delete a Specific Kitten
+### Response Parameters
 
-```ruby
-require 'kittn'
+> The above command returns response JSON structured like this:
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "deleted" : ":("
+  "company_id":"128971hjkiie",
+  "customer_id":"virtual_account_123456789",
+  "bank_id":"BNI",
+  "customer_name":"Brama Diwangkara",
+  "virtual_account_number":"80008087798381082",
+  "virtual_account_id":"5tty4212233uiu",
+  "is_closed":true,
+  "trx_amount":2000000,
+  "datetime_expired":"2020-01-01 13:00:00",
+  "status":"active",
 }
 ```
 
-This endpoint deletes a specific kitten.
+Parameter |  Description
+--------- |  -----------
+company_id | Your user ID
+customer_id | Your customer ID based on your request 
+bank_id | Bank id for the created virtual account
+customer_name | Name of your virtual account 
+virtual_account_number | Generated Virtual Account number and virtual account bank, we place <code>random number</code> if this value is not defined
+virtual_account_id | Generate id for Virtual Account from <code>croxit.io</code>
+is_closed | The transaction amount determined if has <code>true</code> value, default value is <code>false</code>
+trx_amount | Amount of transaction if you set `is_closed` equals true
+datetime_expired | The time when the virtual account will be expired 
+status | status that defines virtual account ACTIVE or INACTIVE
+
+
+
+<aside class="notice">
+Possible error codes: <code>401</code>, <code>402</code>, <code>406</code> and <code>410</code>. See error tab for detail <code>error</code>.
+</aside>
+
+
+<!-- GET PAYMENT FIXED VIRTUAL ACCOUNT -->
+
+## Get Payment Fixed Virtual Account
 
 ### HTTP Request
 
-`DELETE http://example.com/kittens/<ID>`
+`GET https://croxit.io/virtual_accounts/payment/{payment_id}`
 
-### URL Parameters
+### Request Parameters
 
 Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
+--------- | ------- | -----------
+payment_id | Get the <code>payment_id</code> after your server got callback payment from <code>croxit.io</code>. See callback tab for detail.
 
+### Response Parameters
+
+> The above command returns response JSON structured like this:
+
+
+```json
+{
+  "callback_payment_id":"188982ff8f918",
+  "payment_amount":2000000,
+  "payment_id":"pay_9283_99132",
+  "payment_timestamp":"2017-08-11 13:21:29",
+  "company_id":"128971hjkiie",
+  "customer_id":"virtual_account_123456789",
+  "bank_id":"BNI",
+  "customer_name":"Brama Diwangkara",
+  "virtual_account_number":"80008087798381082",
+  "virtual_account_id":"5tty4212233uiu"
+}
+```
+
+Parameter |  Description
+--------- |  -----------
+callback_payment_id | Callback id created when <code>croxit</code> send your server about callback virtual account payment
+payment_amount | Amount that was paid to this virtual account
+payment_id | Id for payment Virtual Account
+payment_timestamp | Date time when payment virtual account happened
+company_id | Your user ID
+customer_id | Your customer ID based on your request 
+bank_id | Bank id for the created virtual account
+customer_name | Name of your virtual account 
+virtual_account_number | Generated Virtual Account number and virtual account bank, we place <code>random number</code> if this value is not defined
+virtual_account_id | Generate id for Virtual Account from <code>croxit.io</code>
+
+
+
+<aside class="notice">
+Possible error codes: <code>401</code>, <code>402</code>, <code>406</code> and <code>410</code>. See error tab for detail <code>error</code>.
+</aside>
