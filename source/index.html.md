@@ -36,7 +36,7 @@ If you are not master at APIs, feel free to ask us about our API or you can expl
 > First add a colon at the end
 
 ```Json
-  crx_development_P4qDfOss0OCpl8RtKrROHjaQYNCk9dN5lSfk+R1l9Wbe+rSiCwZ3jw==
+  crx_development_P4qDfOss0OCpl8RtKrROHjaQYNCk9dN5lSfk+R1l9Wbe+rSiCwZ3jw==;
 ```
 
 > Finally, just encode your api key to get this
@@ -107,7 +107,7 @@ datetime_expired | no | `ISO_DATE`
 
 ```json
 {
-  "company_id":"128971hjkiie",
+  "business_partner_id":"128971hjkiie",
   "customer_id":"virtual_account_123456789",
   "bank_id":"BNI",
   "customer_name":"Brama Diwangkara",
@@ -121,7 +121,7 @@ datetime_expired | no | `ISO_DATE`
 
 Parameter |  Description
 --------- |  -----------
-company_id | Your user ID
+business_partner_id | Your user ID
 customer_id | Your customer ID based on your request 
 bank_id | Bank id for the created virtual account
 customer_name | Name of your virtual account 
@@ -172,7 +172,7 @@ datetime_expired | `ISO_DATE`
 
 ```json
 {
-  "company_id":"128971hjkiie",
+  "business_partner_id":"128971hjkiie",
   "customer_id":"virtual_account_123456789",
   "bank_id":"BNI",
   "customer_name":"Brama Diwangkara",
@@ -187,7 +187,7 @@ datetime_expired | `ISO_DATE`
 
 Parameter |  Description
 --------- |  -----------
-company_id | Your user ID
+business_partner_id | Your user ID
 customer_id | Your customer ID based on your request 
 bank_id | Bank id for the created virtual account
 customer_name | Name of your virtual account 
@@ -226,7 +226,7 @@ virtual_account_id | Generate id for Virtual Account from <code>croxit.io</code>
 
 ```json
 {
-  "company_id":"128971hjkiie",
+  "business_partner_id":"128971hjkiie",
   "customer_id":"virtual_account_123456789",
   "bank_id":"BNI",
   "customer_name":"Brama Diwangkara",
@@ -241,7 +241,7 @@ virtual_account_id | Generate id for Virtual Account from <code>croxit.io</code>
 
 Parameter |  Description
 --------- |  -----------
-company_id | Your user ID
+business_partner_id | Your user ID
 customer_id | Your customer ID based on your request 
 bank_id | Bank id for the created virtual account
 customer_name | Name of your virtual account 
@@ -284,7 +284,7 @@ payment_id | Get the <code>payment_id</code> after your server got callback paym
   "payment_amount":2000000,
   "payment_id":"pay_9283_99132",
   "payment_timestamp":"2017-08-11 13:21:29",
-  "company_id":"128971hjkiie",
+  "business_partner_id":"128971hjkiie",
   "customer_id":"virtual_account_123456789",
   "bank_id":"BNI",
   "customer_name":"Brama Diwangkara",
@@ -299,7 +299,7 @@ callback_payment_id | Callback id created when <code>croxit</code> send your ser
 payment_amount | Amount that was paid to this virtual account
 payment_id | Id for payment Virtual Account
 payment_timestamp | Date time when payment virtual account happened
-company_id | Your user ID
+business_partner_id | Your user ID
 customer_id | Your customer ID based on your request 
 bank_id | Bank id for the created virtual account
 customer_name | Name of your virtual account 
