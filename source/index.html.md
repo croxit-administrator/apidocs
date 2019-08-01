@@ -30,19 +30,19 @@ If you are not master at APIs, feel free to ask us about our API or you can expl
 > `Croxit` use secrete key every you hit our APIs, for example your API key is
 
 ```Json
-  crx_development_P4qDfOss0OCpl8RtKrROHjaQYNCk9dN5lSfk+R1l9Wbe+rSiCwZ3jw==
+  crx_development_R3tJfOss0OC8HjjtKrROHjgkTNCk9dN5lSfk-R1l9Wbe+rSiCwZ3jw==
 ```
 
-> First add a colon at the end
+> First add a exclamation mark at the end of your token
 
 ```Json
-  crx_development_P4qDfOss0OCpl8RtKrROHjaQYNCk9dN5lSfk+R1l9Wbe+rSiCwZ3jw==;
+  crx_development_P4qDfOss0OCpl8RtKrROHjaQYNCk9dN5lSfk+R1l9Wbe+rSiCwZ3jw==!
 ```
 
-> Finally, just encode your api key to get this
+> Finally, just encode your api key with <a href='https://www.base64encode.org/'>base64</a> to get this
 
 ```Json
-  Y3J4X2RldmVsb3BtZW50X1A0cURmT3NzME9DcGw4UnRLclJPSGphUVlOQ2s5ZE41bFNmaytSMWw5V2JlK3JTaUN3WjNqdz09
+  Y3J4X2RldmVsb3BtZW50X1IzdEpmT3NzME9DOEhqanRLclJPSGpna1ROQ2s5ZE41bFNmay1SMWw5V2JlK3JTaUN3WjNqdz09IQ==
 ```
 
 Croxit uses API keys to allow access to the API. You can register a new croxit API key at our [developer portal](http://croxit.io/developers).
@@ -91,13 +91,13 @@ This endpoint is use to create virtual account.
 
 Parameter | Mandatory | Description
 --------- | ------- | -----------
-customer_id | yes | `string` 
-bank_id | yes | `string`
-customer_name | yes | `string`
-virtual_account_number | no | `string`
-is_closed | no | `boolean`
+customer_id | yes | `string` Your customer id (depend on your set) with maximum character is 1000
+bank_id | yes | `string` Bank ID of your virtual account you want to create
+customer_name | yes | `string` Your customer name (contain letter and space only) to display on the bank's interface (like ATM or mobile banking)
+virtual_account_number | no | `string` Virtual Account number, contain 8 character of number
+is_closed | no | `boolean` if this parameter set to true, then the payment of your customer based on your set amount (trx_amount)
 trx_amount | optional | `number` if virtual_account set to closed, you have to determine the trx_amount
-datetime_expired | no | `ISO_DATE` 
+datetime_expired | no | `ISO_DATE` the time when virtual account will be expired
 
 ### Response Parameters
 
@@ -160,9 +160,9 @@ Possible error codes: <code>401</code>, <code>402</code>, <code>406</code> and <
 
 Parameter | Description
 --------- | ------- | -----------
-customer_name | `string`
+customer_name | `string` Your customer name (contain letter and space only) to display on the bank's interface (like ATM or mobile banking)
 trx_amount | `number` changeable if your virtual account is set to <code>is_closed</code>
-datetime_expired | `ISO_DATE` 
+datetime_expired | `ISO_DATE` the time when virtual account will be expired
 
 ### Response Parameters
 
