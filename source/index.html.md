@@ -85,7 +85,7 @@ This endpoint is use to create virtual account.
   {
     "customer_id":"virtual_account_123456789",
     "bank_id":"BNI",
-    "name":"Brama Diwangkara"
+    "name":"Adhi Santosa"
   }
 ```
 
@@ -110,7 +110,7 @@ datetime_expired | no | `ISO_DATE` the time when virtual account will be expired
   "business_partner_id":"128971hjkiie",
   "customer_id":"virtual_account_123456789",
   "bank_id":"BNI",
-  "customer_name":"Brama Diwangkara",
+  "customer_name":"Adhi Santosa",
   "virtual_account_number":"80008087798381082",
   "virtual_account_id":"5tty4212233uiu",
   "is_closed":false,
@@ -175,7 +175,7 @@ datetime_expired | `ISO_DATE` the time when virtual account will be expired
   "business_partner_id":"128971hjkiie",
   "customer_id":"virtual_account_123456789",
   "bank_id":"BNI",
-  "customer_name":"Brama Diwangkara",
+  "customer_name":"Adhi Santosa",
   "virtual_account_number":"80008087798381082",
   "virtual_account_id":"5tty4212233uiu",
   "is_closed":true,
@@ -229,7 +229,7 @@ virtual_account_id | Generate id for Virtual Account from <code>croxit.io</code>
   "business_partner_id":"128971hjkiie",
   "customer_id":"virtual_account_123456789",
   "bank_id":"BNI",
-  "customer_name":"Brama Diwangkara",
+  "customer_name":"Adhi Santosa",
   "virtual_account_number":"80008087798381082",
   "virtual_account_id":"5tty4212233uiu",
   "is_closed":true,
@@ -280,14 +280,13 @@ payment_id | Get the <code>payment_id</code> after your server got callback paym
 
 ```json
 {
-  "callback_payment_id":"188982ff8f918",
-  "payment_amount":2000000,
   "payment_id":"pay_9283_99132",
+  "payment_amount":2000000,
   "payment_timestamp":"2017-08-11 13:21:29",
   "business_partner_id":"128971hjkiie",
   "customer_id":"virtual_account_123456789",
   "bank_id":"BNI",
-  "customer_name":"Brama Diwangkara",
+  "customer_name":"Adhi Santosa",
   "virtual_account_number":"80008087798381082",
   "virtual_account_id":"5tty4212233uiu"
 }
@@ -295,9 +294,8 @@ payment_id | Get the <code>payment_id</code> after your server got callback paym
 
 Parameter |  Description
 --------- |  -----------
-callback_payment_id | Callback id created when <code>croxit</code> send your server about callback virtual account payment
-payment_amount | Amount that was paid to this virtual account
 payment_id | Id for payment Virtual Account
+payment_amount | Amount that was paid to this virtual account
 payment_timestamp | Date time when payment virtual account happened
 business_partner_id | Your user ID
 customer_id | Your customer ID based on your request 
