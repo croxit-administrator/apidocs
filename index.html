@@ -270,17 +270,17 @@
 <blockquote>
 <p><code>Croxit</code> use secrete key every you hit our APIs, for example your API key is</p>
 </blockquote>
-<pre class="highlight plaintext"><code>  crx_development_P4qDfOss0OCpl8RtKrROHjaQYNCk9dN5lSfk+R1l9Wbe+rSiCwZ3jw==
+<pre class="highlight plaintext"><code>  crx_development_R3tJfOss0OC8HjjtKrROHjgkTNCk9dN5lSfk-R1l9Wbe+rSiCwZ3jw==
 </code></pre>
 <blockquote>
-<p>First add a colon at the end</p>
+<p>First add a exclamation mark at the end of your token</p>
 </blockquote>
-<pre class="highlight plaintext"><code>  crx_development_P4qDfOss0OCpl8RtKrROHjaQYNCk9dN5lSfk+R1l9Wbe+rSiCwZ3jw==;
+<pre class="highlight plaintext"><code>  crx_development_P4qDfOss0OCpl8RtKrROHjaQYNCk9dN5lSfk+R1l9Wbe+rSiCwZ3jw==!
 </code></pre>
 <blockquote>
-<p>Finally, just encode your api key to get this</p>
+<p>Finally, just encode your api key with <a href='https://www.base64encode.org/'>base64</a> to get this</p>
 </blockquote>
-<pre class="highlight plaintext"><code>  Y3J4X2RldmVsb3BtZW50X1A0cURmT3NzME9DcGw4UnRLclJPSGphUVlOQ2s5ZE41bFNmaytSMWw5V2JlK3JTaUN3WjNqdz09
+<pre class="highlight plaintext"><code>  Y3J4X2RldmVsb3BtZW50X1IzdEpmT3NzME9DOEhqanRLclJPSGpna1ROQ2s5ZE41bFNmay1SMWw5V2JlK3JTaUN3WjNqdz09IQ==
 </code></pre>
 <p>Croxit uses API keys to allow access to the API. You can register a new croxit API key at our <a href="http://croxit.io/developers">developer portal</a>.</p>
 
@@ -326,27 +326,27 @@ This Fixed virtual account is open (can be pay every time) and you can set the e
 <tr>
 <td>customer_id</td>
 <td>yes</td>
-<td><code>string</code></td>
+<td><code>string</code> Your customer id (depend on your set) with maximum character is 1000</td>
 </tr>
 <tr>
 <td>bank_id</td>
 <td>yes</td>
-<td><code>string</code></td>
+<td><code>string</code> Bank ID of your virtual account you want to create</td>
 </tr>
 <tr>
 <td>customer_name</td>
 <td>yes</td>
-<td><code>string</code></td>
+<td><code>string</code> Your customer name (contain letter and space only) to display on the bank&#39;s interface (like ATM or mobile banking)</td>
 </tr>
 <tr>
 <td>virtual_account_number</td>
 <td>no</td>
-<td><code>string</code></td>
+<td><code>string</code> Virtual Account number, contain 8 character of number</td>
 </tr>
 <tr>
 <td>is_closed</td>
 <td>no</td>
-<td><code>boolean</code></td>
+<td><code>boolean</code> if this parameter set to true, then the payment of your customer based on your set amount (trx_amount)</td>
 </tr>
 <tr>
 <td>trx_amount</td>
@@ -356,7 +356,7 @@ This Fixed virtual account is open (can be pay every time) and you can set the e
 <tr>
 <td>datetime_expired</td>
 <td>no</td>
-<td><code>ISO_DATE</code></td>
+<td><code>ISO_DATE</code> the time when virtual account will be expired</td>
 </tr>
 </tbody></table>
 <h3 id='response-parameters'>Response Parameters</h3>
@@ -447,7 +447,7 @@ Possible error codes: <code>401</code>, <code>402</code>, <code>406</code> and <
 </thead><tbody>
 <tr>
 <td>customer_name</td>
-<td><code>string</code></td>
+<td><code>string</code> Your customer name (contain letter and space only) to display on the bank&#39;s interface (like ATM or mobile banking)</td>
 </tr>
 <tr>
 <td>trx_amount</td>
@@ -455,7 +455,7 @@ Possible error codes: <code>401</code>, <code>402</code>, <code>406</code> and <
 </tr>
 <tr>
 <td>datetime_expired</td>
-<td><code>ISO_DATE</code></td>
+<td><code>ISO_DATE</code> the time when virtual account will be expired</td>
 </tr>
 </tbody></table>
 <h3 id='response-parameters-2'>Response Parameters</h3>
