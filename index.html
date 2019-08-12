@@ -292,6 +292,10 @@
 
 <p><code>Content-Type: application/json</code></p>
 
+<p>And you all the reponse and request body should be:</p>
+
+<p><code>Camel case variable</code></p>
+
 <aside class="notice">
 You have to register first at <code>croxit.io</code> to get your API secrete key.
 </aside>
@@ -311,8 +315,8 @@ This Fixed virtual account is open (can be pay every time) and you can set the e
 <p>Example create fixed Virtual Account</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"customer_id"</span><span class="p">:</span><span class="s2">"virtual_account_123456789"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"bank_id"</span><span class="p">:</span><span class="s2">"BNI"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"customerId"</span><span class="p">:</span><span class="s2">"virtual_account_123456789"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bankId"</span><span class="p">:</span><span class="s2">"BNI"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Adhi Santosa"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -324,37 +328,37 @@ This Fixed virtual account is open (can be pay every time) and you can set the e
 </tr>
 </thead><tbody>
 <tr>
-<td>customer_id</td>
+<td>customerId</td>
 <td>yes</td>
 <td><code>string</code> Your customer id (depend on your set) with maximum character is 1000</td>
 </tr>
 <tr>
-<td>bank_id</td>
+<td>bankId</td>
 <td>yes</td>
 <td><code>string</code> Bank ID of your virtual account you want to create</td>
 </tr>
 <tr>
-<td>customer_name</td>
+<td>customerName</td>
 <td>yes</td>
 <td><code>string</code> Your customer name (contain letter and space only) to display on the bank&#39;s interface (like ATM or mobile banking)</td>
 </tr>
 <tr>
-<td>virtual_account_number</td>
+<td>virtualAccountNumber</td>
 <td>no</td>
 <td><code>string</code> Virtual Account number, contain 8 character of number</td>
 </tr>
 <tr>
-<td>is_closed</td>
+<td>isClosed</td>
 <td>no</td>
-<td><code>boolean</code> if this parameter set to true, then the payment of your customer based on your set amount (trx_amount)</td>
+<td><code>boolean</code> if this parameter set to true, then the payment of your customer based on your set amount (trxAmount)</td>
 </tr>
 <tr>
-<td>trx_amount</td>
+<td>trxAmount</td>
 <td>optional</td>
-<td><code>number</code> if virtual_account set to closed, you have to determine the trx_amount</td>
+<td><code>number</code> if virtual_account set to closed, you have to determine the trxAmount</td>
 </tr>
 <tr>
-<td>datetime_expired</td>
+<td>datetimeExpired</td>
 <td>no</td>
 <td><code>ISO_DATE</code> the time when virtual account will be expired</td>
 </tr>
@@ -364,14 +368,14 @@ This Fixed virtual account is open (can be pay every time) and you can set the e
 <p>The above command returns response JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"business_partner_id"</span><span class="p">:</span><span class="s2">"128971hjkiie"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"customer_id"</span><span class="p">:</span><span class="s2">"virtual_account_123456789"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"bank_id"</span><span class="p">:</span><span class="s2">"BNI"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"customer_name"</span><span class="p">:</span><span class="s2">"Adhi Santosa"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"virtual_account_number"</span><span class="p">:</span><span class="s2">"80008087798381082"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"virtual_account_id"</span><span class="p">:</span><span class="s2">"5tty4212233uiu"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"is_closed"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"datetime_expired"</span><span class="p">:</span><span class="s2">"2020-01-01 13:00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"businessPartnerId"</span><span class="p">:</span><span class="s2">"128971hjkiie"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"customerId"</span><span class="p">:</span><span class="s2">"virtual_account_123456789"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"bankId"</span><span class="p">:</span><span class="s2">"BNI"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"customerName"</span><span class="p">:</span><span class="s2">"Adhi Santosa"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"virtualAccountNumber"</span><span class="p">:</span><span class="s2">"80008087798381082"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"virtualAccountId"</span><span class="p">:</span><span class="s2">"5tty4212233uiu"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"isClosed"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"datetimeExpired"</span><span class="p">:</span><span class="s2">"2020-01-01 13:00:00"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"active"</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -382,39 +386,39 @@ This Fixed virtual account is open (can be pay every time) and you can set the e
 </tr>
 </thead><tbody>
 <tr>
-<td>business_partner_id</td>
+<td>businessPartnerId</td>
 <td>Your user ID</td>
 </tr>
 <tr>
-<td>customer_id</td>
+<td>customerId</td>
 <td>Your customer ID based on your request</td>
 </tr>
 <tr>
-<td>bank_id</td>
+<td>bankId</td>
 <td>Bank id for the created virtual account</td>
 </tr>
 <tr>
-<td>customer_name</td>
+<td>customerName</td>
 <td>Name of your virtual account</td>
 </tr>
 <tr>
-<td>virtual_account_number</td>
+<td>virtualAccountNumber</td>
 <td>Generated Virtual Account number and virtual account bank, we place <code>random number</code> if this value is not defined</td>
 </tr>
 <tr>
-<td>virtual_account_id</td>
+<td>virtualAccountId</td>
 <td>Generate id for Virtual Account from <code>croxit.io</code></td>
 </tr>
 <tr>
-<td>is_closed</td>
+<td>isClosed</td>
 <td>The transaction amount determined if has true <code>value</code>, default value is <code>false</code></td>
 </tr>
 <tr>
-<td>trx_amount</td>
-<td>Amount of transaction if you set <code>is_closed</code> equals true</td>
+<td>trxAmount</td>
+<td>Amount of transaction if you set <code>isClosed</code> equals true</td>
 </tr>
 <tr>
-<td>datetime_expired</td>
+<td>datetimeExpired</td>
 <td>The time when the virtual account will be expired, default for this value is 1 year from virtual account created</td>
 </tr>
 <tr>
@@ -429,14 +433,14 @@ Possible error codes: <code>401</code>, <code>402</code>, <code>406</code> and <
 
 <!-- UPDATE FIXED VIRTUAL ACCOUNT -->
 <h2 id='update-fixed-virtual-account'>Update Fixed Virtual Account</h2><h3 id='http-request-2'>HTTP Request</h3>
-<p><code>PUT https://croxit.io/virtual_accounts/update/{virtual_account_id}</code></p>
+<p><code>PUT https://croxit.io/virtual_accounts/update/{virtualAccountId}</code></p>
 <h3 id='request-parameters-2'>Request Parameters</h3>
 <blockquote>
 <p>Example update fixed Virtual Account</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"trx_amount"</span><span class="p">:</span><span class="mi">2000000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"datetime_expired"</span><span class="p">:</span><span class="s2">"2020-01-01 13:00:00"</span><span class="w">
+    </span><span class="s2">"trxAmount"</span><span class="p">:</span><span class="mi">2000000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"datetimeExpired"</span><span class="p">:</span><span class="s2">"2020-01-01 13:00:00"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <table><thead>
@@ -446,15 +450,15 @@ Possible error codes: <code>401</code>, <code>402</code>, <code>406</code> and <
 </tr>
 </thead><tbody>
 <tr>
-<td>customer_name</td>
+<td>customerName</td>
 <td><code>string</code> Your customer name (contain letter and space only) to display on the bank&#39;s interface (like ATM or mobile banking)</td>
 </tr>
 <tr>
-<td>trx_amount</td>
-<td><code>number</code> changeable if your virtual account is set to <code>is_closed</code></td>
+<td>trxAmount</td>
+<td><code>number</code> changeable if your virtual account is set to <code>isClosed</code></td>
 </tr>
 <tr>
-<td>datetime_expired</td>
+<td>datetimeExpired</td>
 <td><code>ISO_DATE</code> the time when virtual account will be expired</td>
 </tr>
 </tbody></table>
@@ -463,15 +467,15 @@ Possible error codes: <code>401</code>, <code>402</code>, <code>406</code> and <
 <p>The above command returns response JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"business_partner_id"</span><span class="p">:</span><span class="s2">"128971hjkiie"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"customer_id"</span><span class="p">:</span><span class="s2">"virtual_account_123456789"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"bank_id"</span><span class="p">:</span><span class="s2">"BNI"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"customer_name"</span><span class="p">:</span><span class="s2">"Adhi Santosa"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"virtual_account_number"</span><span class="p">:</span><span class="s2">"80008087798381082"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"virtual_account_id"</span><span class="p">:</span><span class="s2">"5tty4212233uiu"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"is_closed"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"trx_amount"</span><span class="p">:</span><span class="mi">2000000</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"datetime_expired"</span><span class="p">:</span><span class="s2">"2020-01-01 13:00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"businessPartnerId"</span><span class="p">:</span><span class="s2">"128971hjkiie"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"customerId"</span><span class="p">:</span><span class="s2">"virtual_account_123456789"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"bankId"</span><span class="p">:</span><span class="s2">"BNI"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"customerName"</span><span class="p">:</span><span class="s2">"Adhi Santosa"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"virtualAccountNumber"</span><span class="p">:</span><span class="s2">"80008087798381082"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"virtualAccountId"</span><span class="p">:</span><span class="s2">"5tty4212233uiu"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"isClosed"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"trxAmount"</span><span class="p">:</span><span class="mi">2000000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"datetimeExpired"</span><span class="p">:</span><span class="s2">"2020-01-01 13:00:00"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"active"</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -482,39 +486,39 @@ Possible error codes: <code>401</code>, <code>402</code>, <code>406</code> and <
 </tr>
 </thead><tbody>
 <tr>
-<td>business_partner_id</td>
+<td>businessPartnerId</td>
 <td>Your user ID</td>
 </tr>
 <tr>
-<td>customer_id</td>
+<td>customerId</td>
 <td>Your customer ID based on your request</td>
 </tr>
 <tr>
-<td>bank_id</td>
+<td>bankId</td>
 <td>Bank id for the created virtual account</td>
 </tr>
 <tr>
-<td>customer_name</td>
+<td>customerName</td>
 <td>Name of your virtual account</td>
 </tr>
 <tr>
-<td>virtual_account_number</td>
+<td>virtualAccountNumber</td>
 <td>Generated Virtual Account number and virtual account bank, we place <code>random number</code> if this value is not defined</td>
 </tr>
 <tr>
-<td>virtual_account_id</td>
+<td>virtualAccountId</td>
 <td>Generate id for Virtual Account from <code>croxit.io</code></td>
 </tr>
 <tr>
-<td>is_closed</td>
+<td>isClosed</td>
 <td>The transaction amount determined if has <code>true</code> value, default value is <code>false</code></td>
 </tr>
 <tr>
-<td>trx_amount</td>
-<td>Amount of transaction if you set <code>is_closed</code> equals true</td>
+<td>trxAmount</td>
+<td>Amount of transaction if you set <code>isClosed</code> equals true</td>
 </tr>
 <tr>
-<td>datetime_expired</td>
+<td>datetimeExpired</td>
 <td>The time when the virtual account will be expired</td>
 </tr>
 <tr>
@@ -529,7 +533,7 @@ Possible error codes: <code>401</code>, <code>402</code>, <code>406</code> and <
 
 <!-- GET DETAIL FIXED VIRTUAL ACCOUNT -->
 <h2 id='get-detail-fixed-virtual-account'>Get Detail Fixed Virtual Account</h2><h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://croxit.io/virtual_accounts/get/{virtual_account_id}</code></p>
+<p><code>GET https://croxit.io/virtual_accounts/get/{virtualAccountId}</code></p>
 <h3 id='request-parameters-3'>Request Parameters</h3>
 <table><thead>
 <tr>
@@ -538,7 +542,7 @@ Possible error codes: <code>401</code>, <code>402</code>, <code>406</code> and <
 </tr>
 </thead><tbody>
 <tr>
-<td>virtual_account_id</td>
+<td>virtualAccountId</td>
 <td>Generate id for Virtual Account from <code>croxit.io</code></td>
 </tr>
 </tbody></table>
@@ -547,15 +551,15 @@ Possible error codes: <code>401</code>, <code>402</code>, <code>406</code> and <
 <p>The above command returns response JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"business_partner_id"</span><span class="p">:</span><span class="s2">"128971hjkiie"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"customer_id"</span><span class="p">:</span><span class="s2">"virtual_account_123456789"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"bank_id"</span><span class="p">:</span><span class="s2">"BNI"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"customer_name"</span><span class="p">:</span><span class="s2">"Adhi Santosa"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"virtual_account_number"</span><span class="p">:</span><span class="s2">"80008087798381082"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"virtual_account_id"</span><span class="p">:</span><span class="s2">"5tty4212233uiu"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"is_closed"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"trx_amount"</span><span class="p">:</span><span class="mi">2000000</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"datetime_expired"</span><span class="p">:</span><span class="s2">"2020-01-01 13:00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"businessPartnerId"</span><span class="p">:</span><span class="s2">"128971hjkiie"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"customerId"</span><span class="p">:</span><span class="s2">"virtual_account_123456789"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"bankId"</span><span class="p">:</span><span class="s2">"BNI"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"customerName"</span><span class="p">:</span><span class="s2">"Adhi Santosa"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"virtualAccountNumber"</span><span class="p">:</span><span class="s2">"80008087798381082"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"virtualAccountId"</span><span class="p">:</span><span class="s2">"5tty4212233uiu"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"isClosed"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"trxAmount"</span><span class="p">:</span><span class="mi">2000000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"datetimeExpired"</span><span class="p">:</span><span class="s2">"2020-01-01 13:00:00"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"active"</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -566,39 +570,39 @@ Possible error codes: <code>401</code>, <code>402</code>, <code>406</code> and <
 </tr>
 </thead><tbody>
 <tr>
-<td>business_partner_id</td>
+<td>businessPartnerId</td>
 <td>Your user ID</td>
 </tr>
 <tr>
-<td>customer_id</td>
+<td>customerId</td>
 <td>Your customer ID based on your request</td>
 </tr>
 <tr>
-<td>bank_id</td>
+<td>bankId</td>
 <td>Bank id for the created virtual account</td>
 </tr>
 <tr>
-<td>customer_name</td>
+<td>customerName</td>
 <td>Name of your virtual account</td>
 </tr>
 <tr>
-<td>virtual_account_number</td>
+<td>virtualAccountNumber</td>
 <td>Generated Virtual Account number and virtual account bank, we place <code>random number</code> if this value is not defined</td>
 </tr>
 <tr>
-<td>virtual_account_id</td>
+<td>virtualAccountId</td>
 <td>Generate id for Virtual Account from <code>croxit.io</code></td>
 </tr>
 <tr>
-<td>is_closed</td>
+<td>isClosed</td>
 <td>The transaction amount determined if has <code>true</code> value, default value is <code>false</code></td>
 </tr>
 <tr>
-<td>trx_amount</td>
-<td>Amount of transaction if you set <code>is_closed</code> equals true</td>
+<td>trxAmount</td>
+<td>Amount of transaction if you set <code>isClosed</code> equals true</td>
 </tr>
 <tr>
-<td>datetime_expired</td>
+<td>datetimeExpired</td>
 <td>The time when the virtual account will be expired</td>
 </tr>
 <tr>
@@ -613,7 +617,7 @@ Possible error codes: <code>401</code>, <code>402</code>, <code>406</code> and <
 
 <!-- GET PAYMENT FIXED VIRTUAL ACCOUNT -->
 <h2 id='get-payment-fixed-virtual-account'>Get Payment Fixed Virtual Account</h2><h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET https://croxit.io/virtual_accounts/payment/{payment_id}</code></p>
+<p><code>GET https://croxit.io/virtual_accounts/payment/{paymentId}</code></p>
 <h3 id='request-parameters-4'>Request Parameters</h3>
 <table><thead>
 <tr>
@@ -622,8 +626,8 @@ Possible error codes: <code>401</code>, <code>402</code>, <code>406</code> and <
 </tr>
 </thead><tbody>
 <tr>
-<td>payment_id</td>
-<td>Get the <code>payment_id</code> after your server got callback payment from <code>croxit.io</code>. See callback tab for detail.</td>
+<td>paymentId</td>
+<td>Get the <code>paymentId</code> after your server got callback payment from <code>croxit.io</code>. See callback tab for detail.</td>
 </tr>
 </tbody></table>
 <h3 id='response-parameters-4'>Response Parameters</h3>
@@ -631,15 +635,15 @@ Possible error codes: <code>401</code>, <code>402</code>, <code>406</code> and <
 <p>The above command returns response JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"payment_id"</span><span class="p">:</span><span class="s2">"pay_9283_99132"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"payment_amount"</span><span class="p">:</span><span class="mi">2000000</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"payment_timestamp"</span><span class="p">:</span><span class="s2">"2017-08-11 13:21:29"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"business_partner_id"</span><span class="p">:</span><span class="s2">"128971hjkiie"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"customer_id"</span><span class="p">:</span><span class="s2">"virtual_account_123456789"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"bank_id"</span><span class="p">:</span><span class="s2">"BNI"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"customer_name"</span><span class="p">:</span><span class="s2">"Adhi Santosa"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"virtual_account_number"</span><span class="p">:</span><span class="s2">"80008087798381082"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"virtual_account_id"</span><span class="p">:</span><span class="s2">"5tty4212233uiu"</span><span class="w">
+  </span><span class="s2">"paymentId"</span><span class="p">:</span><span class="s2">"pay_9283_99132"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"paymentAmount"</span><span class="p">:</span><span class="mi">2000000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"paymentTimestamp"</span><span class="p">:</span><span class="s2">"2017-08-11 13:21:29"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"businessPartnerId"</span><span class="p">:</span><span class="s2">"128971hjkiie"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"customerId"</span><span class="p">:</span><span class="s2">"virtual_account_123456789"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"bankId"</span><span class="p">:</span><span class="s2">"BNI"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"customerName"</span><span class="p">:</span><span class="s2">"Adhi Santosa"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"virtualAccountNumber"</span><span class="p">:</span><span class="s2">"80008087798381082"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"virtualAccountId"</span><span class="p">:</span><span class="s2">"5tty4212233uiu"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <table><thead>
@@ -649,39 +653,39 @@ Possible error codes: <code>401</code>, <code>402</code>, <code>406</code> and <
 </tr>
 </thead><tbody>
 <tr>
-<td>payment_id</td>
+<td>paymentId</td>
 <td>Id for payment Virtual Account</td>
 </tr>
 <tr>
-<td>payment_amount</td>
+<td>paymentAmount</td>
 <td>Amount that was paid to this virtual account</td>
 </tr>
 <tr>
-<td>payment_timestamp</td>
+<td>paymentTimestamp</td>
 <td>Date time when payment virtual account happened</td>
 </tr>
 <tr>
-<td>business_partner_id</td>
+<td>businessPartnerId</td>
 <td>Your user ID</td>
 </tr>
 <tr>
-<td>customer_id</td>
+<td>customerId</td>
 <td>Your customer ID based on your request</td>
 </tr>
 <tr>
-<td>bank_id</td>
+<td>bankId</td>
 <td>Bank id for the created virtual account</td>
 </tr>
 <tr>
-<td>customer_name</td>
+<td>customerName</td>
 <td>Name of your virtual account</td>
 </tr>
 <tr>
-<td>virtual_account_number</td>
+<td>virtualAccountNumber</td>
 <td>Generated Virtual Account number and virtual account bank, we place <code>random number</code> if this value is not defined</td>
 </tr>
 <tr>
-<td>virtual_account_id</td>
+<td>virtualAccountId</td>
 <td>Generate id for Virtual Account from <code>croxit.io</code></td>
 </tr>
 </tbody></table>
