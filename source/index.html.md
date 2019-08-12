@@ -55,6 +55,10 @@ All the following request must inlcude header json type, so just place this on y
 
 `Content-Type: application/json`
 
+And you all the reponse and request body should be:
+
+`Camel case variable`
+
 <aside class="notice">
 You have to register first at <code>croxit.io</code> to get your API secrete key.
 </aside>
@@ -83,21 +87,21 @@ This endpoint is use to create virtual account.
 
 ```json
   {
-    "customer_id":"virtual_account_123456789",
-    "bank_id":"BNI",
+    "customerId":"virtual_account_123456789",
+    "bankId":"BNI",
     "name":"Adhi Santosa"
   }
 ```
 
 Parameter | Mandatory | Description
 --------- | ------- | -----------
-customer_id | yes | `string` Your customer id (depend on your set) with maximum character is 1000
-bank_id | yes | `string` Bank ID of your virtual account you want to create
-customer_name | yes | `string` Your customer name (contain letter and space only) to display on the bank's interface (like ATM or mobile banking)
-virtual_account_number | no | `string` Virtual Account number, contain 8 character of number
-is_closed | no | `boolean` if this parameter set to true, then the payment of your customer based on your set amount (trx_amount)
-trx_amount | optional | `number` if virtual_account set to closed, you have to determine the trx_amount
-datetime_expired | no | `ISO_DATE` the time when virtual account will be expired
+customerId | yes | `string` Your customer id (depend on your set) with maximum character is 1000
+bankId | yes | `string` Bank ID of your virtual account you want to create
+customerName | yes | `string` Your customer name (contain letter and space only) to display on the bank's interface (like ATM or mobile banking)
+virtualAccountNumber | no | `string` Virtual Account number, contain 8 character of number
+isClosed | no | `boolean` if this parameter set to true, then the payment of your customer based on your set amount (trxAmount)
+trxAmount | optional | `number` if virtual_account set to closed, you have to determine the trxAmount
+datetimeExpired | no | `ISO_DATE` the time when virtual account will be expired
 
 ### Response Parameters
 
@@ -107,29 +111,29 @@ datetime_expired | no | `ISO_DATE` the time when virtual account will be expired
 
 ```json
 {
-  "business_partner_id":"128971hjkiie",
-  "customer_id":"virtual_account_123456789",
-  "bank_id":"BNI",
-  "customer_name":"Adhi Santosa",
-  "virtual_account_number":"80008087798381082",
-  "virtual_account_id":"5tty4212233uiu",
-  "is_closed":false,
-  "datetime_expired":"2020-01-01 13:00:00",
+  "businessPartnerId":"128971hjkiie",
+  "customerId":"virtual_account_123456789",
+  "bankId":"BNI",
+  "customerName":"Adhi Santosa",
+  "virtualAccountNumber":"80008087798381082",
+  "virtualAccountId":"5tty4212233uiu",
+  "isClosed":false,
+  "datetimeExpired":"2020-01-01 13:00:00",
   "status":"active",
 }
 ```
 
 Parameter |  Description
 --------- |  -----------
-business_partner_id | Your user ID
-customer_id | Your customer ID based on your request 
-bank_id | Bank id for the created virtual account
-customer_name | Name of your virtual account 
-virtual_account_number | Generated Virtual Account number and virtual account bank, we place <code>random number</code> if this value is not defined
-virtual_account_id | Generate id for Virtual Account from <code>croxit.io</code>
-is_closed | The transaction amount determined if has true <code>value</code>, default value is <code>false</code>
-trx_amount | Amount of transaction if you set `is_closed` equals true
-datetime_expired | The time when the virtual account will be expired, default for this value is 1 year from virtual account created
+businessPartnerId | Your user ID
+customerId | Your customer ID based on your request 
+bankId | Bank id for the created virtual account
+customerName | Name of your virtual account 
+virtualAccountNumber | Generated Virtual Account number and virtual account bank, we place <code>random number</code> if this value is not defined
+virtualAccountId | Generate id for Virtual Account from <code>croxit.io</code>
+isClosed | The transaction amount determined if has true <code>value</code>, default value is <code>false</code>
+trxAmount | Amount of transaction if you set `isClosed` equals true
+datetimeExpired | The time when the virtual account will be expired, default for this value is 1 year from virtual account created
 status | status that defines virtual account ACTIVE or INACTIVE
 
 
@@ -145,7 +149,7 @@ Possible error codes: <code>401</code>, <code>402</code>, <code>406</code> and <
 
 ### HTTP Request
 
-`PUT https://croxit.io/virtual_accounts/update/{virtual_account_id}`
+`PUT https://croxit.io/virtual_accounts/update/{virtualAccountId}`
 
 ### Request Parameters
 
@@ -153,16 +157,16 @@ Possible error codes: <code>401</code>, <code>402</code>, <code>406</code> and <
 
 ```json
   {
-    "trx_amount":2000000,
-    "datetime_expired":"2020-01-01 13:00:00"
+    "trxAmount":2000000,
+    "datetimeExpired":"2020-01-01 13:00:00"
   }
 ```
 
 Parameter | Description
 --------- | ------- | -----------
-customer_name | `string` Your customer name (contain letter and space only) to display on the bank's interface (like ATM or mobile banking)
-trx_amount | `number` changeable if your virtual account is set to <code>is_closed</code>
-datetime_expired | `ISO_DATE` the time when virtual account will be expired
+customerName | `string` Your customer name (contain letter and space only) to display on the bank's interface (like ATM or mobile banking)
+trxAmount | `number` changeable if your virtual account is set to <code>isClosed</code>
+datetimeExpired | `ISO_DATE` the time when virtual account will be expired
 
 ### Response Parameters
 
@@ -172,30 +176,30 @@ datetime_expired | `ISO_DATE` the time when virtual account will be expired
 
 ```json
 {
-  "business_partner_id":"128971hjkiie",
-  "customer_id":"virtual_account_123456789",
-  "bank_id":"BNI",
-  "customer_name":"Adhi Santosa",
-  "virtual_account_number":"80008087798381082",
-  "virtual_account_id":"5tty4212233uiu",
-  "is_closed":true,
-  "trx_amount":2000000,
-  "datetime_expired":"2020-01-01 13:00:00",
+  "businessPartnerId":"128971hjkiie",
+  "customerId":"virtual_account_123456789",
+  "bankId":"BNI",
+  "customerName":"Adhi Santosa",
+  "virtualAccountNumber":"80008087798381082",
+  "virtualAccountId":"5tty4212233uiu",
+  "isClosed":true,
+  "trxAmount":2000000,
+  "datetimeExpired":"2020-01-01 13:00:00",
   "status":"active",
 }
 ```
 
 Parameter |  Description
 --------- |  -----------
-business_partner_id | Your user ID
-customer_id | Your customer ID based on your request 
-bank_id | Bank id for the created virtual account
-customer_name | Name of your virtual account 
-virtual_account_number | Generated Virtual Account number and virtual account bank, we place <code>random number</code> if this value is not defined
-virtual_account_id | Generate id for Virtual Account from <code>croxit.io</code>
-is_closed | The transaction amount determined if has <code>true</code> value, default value is <code>false</code>
-trx_amount | Amount of transaction if you set `is_closed` equals true
-datetime_expired | The time when the virtual account will be expired 
+businessPartnerId | Your user ID
+customerId | Your customer ID based on your request 
+bankId | Bank id for the created virtual account
+customerName | Name of your virtual account 
+virtualAccountNumber | Generated Virtual Account number and virtual account bank, we place <code>random number</code> if this value is not defined
+virtualAccountId | Generate id for Virtual Account from <code>croxit.io</code>
+isClosed | The transaction amount determined if has <code>true</code> value, default value is <code>false</code>
+trxAmount | Amount of transaction if you set `isClosed` equals true
+datetimeExpired | The time when the virtual account will be expired 
 status | status that defines virtual account ACTIVE or INACTIVE
 
 
@@ -211,13 +215,13 @@ Possible error codes: <code>401</code>, <code>402</code>, <code>406</code> and <
 
 ### HTTP Request
 
-`GET https://croxit.io/virtual_accounts/get/{virtual_account_id}`
+`GET https://croxit.io/virtual_accounts/get/{virtualAccountId}`
 
 ### Request Parameters
 
 Parameter | Description
 --------- | ------- | -----------
-virtual_account_id | Generate id for Virtual Account from <code>croxit.io</code>
+virtualAccountId | Generate id for Virtual Account from <code>croxit.io</code>
 
 ### Response Parameters
 
@@ -226,30 +230,30 @@ virtual_account_id | Generate id for Virtual Account from <code>croxit.io</code>
 
 ```json
 {
-  "business_partner_id":"128971hjkiie",
-  "customer_id":"virtual_account_123456789",
-  "bank_id":"BNI",
-  "customer_name":"Adhi Santosa",
-  "virtual_account_number":"80008087798381082",
-  "virtual_account_id":"5tty4212233uiu",
-  "is_closed":true,
-  "trx_amount":2000000,
-  "datetime_expired":"2020-01-01 13:00:00",
+  "businessPartnerId":"128971hjkiie",
+  "customerId":"virtual_account_123456789",
+  "bankId":"BNI",
+  "customerName":"Adhi Santosa",
+  "virtualAccountNumber":"80008087798381082",
+  "virtualAccountId":"5tty4212233uiu",
+  "isClosed":true,
+  "trxAmount":2000000,
+  "datetimeExpired":"2020-01-01 13:00:00",
   "status":"active",
 }
 ```
 
 Parameter |  Description
 --------- |  -----------
-business_partner_id | Your user ID
-customer_id | Your customer ID based on your request 
-bank_id | Bank id for the created virtual account
-customer_name | Name of your virtual account 
-virtual_account_number | Generated Virtual Account number and virtual account bank, we place <code>random number</code> if this value is not defined
-virtual_account_id | Generate id for Virtual Account from <code>croxit.io</code>
-is_closed | The transaction amount determined if has <code>true</code> value, default value is <code>false</code>
-trx_amount | Amount of transaction if you set `is_closed` equals true
-datetime_expired | The time when the virtual account will be expired 
+businessPartnerId | Your user ID
+customerId | Your customer ID based on your request 
+bankId | Bank id for the created virtual account
+customerName | Name of your virtual account 
+virtualAccountNumber | Generated Virtual Account number and virtual account bank, we place <code>random number</code> if this value is not defined
+virtualAccountId | Generate id for Virtual Account from <code>croxit.io</code>
+isClosed | The transaction amount determined if has <code>true</code> value, default value is <code>false</code>
+trxAmount | Amount of transaction if you set `isClosed` equals true
+datetimeExpired | The time when the virtual account will be expired 
 status | status that defines virtual account ACTIVE or INACTIVE
 
 
@@ -265,13 +269,13 @@ Possible error codes: <code>401</code>, <code>402</code>, <code>406</code> and <
 
 ### HTTP Request
 
-`GET https://croxit.io/virtual_accounts/payment/{payment_id}`
+`GET https://croxit.io/virtual_accounts/payment/{paymentId}`
 
 ### Request Parameters
 
 Parameter | Description
 --------- | ------- | -----------
-payment_id | Get the <code>payment_id</code> after your server got callback payment from <code>croxit.io</code>. See callback tab for detail.
+paymentId | Get the <code>paymentId</code> after your server got callback payment from <code>croxit.io</code>. See callback tab for detail.
 
 ### Response Parameters
 
@@ -280,29 +284,29 @@ payment_id | Get the <code>payment_id</code> after your server got callback paym
 
 ```json
 {
-  "payment_id":"pay_9283_99132",
-  "payment_amount":2000000,
-  "payment_timestamp":"2017-08-11 13:21:29",
-  "business_partner_id":"128971hjkiie",
-  "customer_id":"virtual_account_123456789",
-  "bank_id":"BNI",
-  "customer_name":"Adhi Santosa",
-  "virtual_account_number":"80008087798381082",
-  "virtual_account_id":"5tty4212233uiu"
+  "paymentId":"pay_9283_99132",
+  "paymentAmount":2000000,
+  "paymentTimestamp":"2017-08-11 13:21:29",
+  "businessPartnerId":"128971hjkiie",
+  "customerId":"virtual_account_123456789",
+  "bankId":"BNI",
+  "customerName":"Adhi Santosa",
+  "virtualAccountNumber":"80008087798381082",
+  "virtualAccountId":"5tty4212233uiu"
 }
 ```
 
 Parameter |  Description
 --------- |  -----------
-payment_id | Id for payment Virtual Account
-payment_amount | Amount that was paid to this virtual account
-payment_timestamp | Date time when payment virtual account happened
-business_partner_id | Your user ID
-customer_id | Your customer ID based on your request 
-bank_id | Bank id for the created virtual account
-customer_name | Name of your virtual account 
-virtual_account_number | Generated Virtual Account number and virtual account bank, we place <code>random number</code> if this value is not defined
-virtual_account_id | Generate id for Virtual Account from <code>croxit.io</code>
+paymentId | Id for payment Virtual Account
+paymentAmount | Amount that was paid to this virtual account
+paymentTimestamp | Date time when payment virtual account happened
+businessPartnerId | Your user ID
+customerId | Your customer ID based on your request 
+bankId | Bank id for the created virtual account
+customerName | Name of your virtual account 
+virtualAccountNumber | Generated Virtual Account number and virtual account bank, we place <code>random number</code> if this value is not defined
+virtualAccountId | Generate id for Virtual Account from <code>croxit.io</code>
 
 
 
